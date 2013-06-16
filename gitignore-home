@@ -1,3 +1,5 @@
+# This files breaks from the naming scheme because the actual .gitignore file applies to this repo
+
 # Compiled Python files
 *.pyc
 
