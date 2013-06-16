@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# OSX Settings
+# Use AirDrop over every interface. srsly this should be a default.
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
+
+# Always open everything in Finder's column view
+defaults write com.apple.Finder FXPreferredViewStyle clmv
+
+# Show the ~/Library folder.
+chflags nohidden ~/Library
+
+# Set the Finder prefs for showing a few different volumes on the Desktop.
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+defaults write com.apple.finder ShowStatusBar -bool true                    # Finder: show status bar
+defaults write com.apple.finder ShowPathbar -bool true                      # Finder: show path bar
+defaults write com.apple.finder QLEnableTextSelection -bool true            # Finder: allow text selection in Quick Look
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false  # Disable the warning when changing a file extension
+
+# Mail. Disable send and reply animations in Mail.app
+defaults write com.apple.mail DisableReplyAnimations -bool true
+defaults write com.apple.mail DisableSendAnimations -bool true
+
+# Use plain text mode for new TextEdit documents. Open and save files as UTF-8
+defaults write com.apple.TextEdit RichText -int 0
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+# Set up Safari for development.
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Enable full keyboard access for all controls
+# (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Transmission.
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true  #   Use `~/Documents/Torrents` to store incomplete downloads
+defaults write org.m0k.transmission DownloadAsk -bool false                 # Don’t prompt for confirmation before downloading
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true        # Trash original torrent files
+defaults write org.m0k.transmission WarningDonate -bool false               # Hide the donate message
+defaults write org.m0k.transmission WarningLegal -bool false                # Hide the legal disclaimer

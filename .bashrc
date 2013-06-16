@@ -16,3 +16,22 @@ fi
 
 
 # Put your fun stuff here.
+
+# Source the files
+for file in ~/.{bash_prompt,exports,aliases,functions,profile}; do
+  [ -r "$file" ] && source "$file"
+done
+unset file
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
+# Add tab completion for `defaults read|write NSGlobalDomain`
+# You could just use `-g` instead, but I like being explicit
+complete -W "NSGlobalDomain" defaults
+
+# If possible, add tab completion for many more commands
+[ -f /etc/bash_completion ] && source /etc/bash_completion

@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+$home_dir = '/Users/' + ENV['USER']
+$this_dir = File.expand_path(File.dirname(__FILE__))
+
+def symlink(file, destination=nil)
+  filename = File.basename file
+  destination ||= "#{$home_dir}/#{filename}"
+  if File.exists? destination
+    puts "#{destination} exists, skipping"
+  else
+    puts "Symlinking #{file} to #{destination}"
+    `ln -s #{file} #{destination}`
+  end
+end
+
+# Symlink dotfiles into ~
+pattern = "#{$this_dir}/.*"
+skips = %w(. .. .git .gitignore ignore bootstrap)
+Dir.glob(pattern) do |file|
+  #puts file
+  next if skips.include? File.basename file
+  symlink file
+end
+
+symlink("#{$this_dir}/gitignore-home", "#{$home_dir}/.gitignore")
+
+# Source files
+Dir.foreach("#{$this_dir}/source-once") do |file|
+  next if file == '.' or file == '..'
+  filename = "#{$this_dir}/source-once/#{file}"
+  puts "Sourcing #{file}"
+  `#{filename}`
+end
+
+# @TODO: platform specific includes
