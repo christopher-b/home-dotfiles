@@ -1,8 +1,8 @@
 #Dotfiles
 
-This is my dotfiles repo. Most of the files here are from:
+My dotfiles repo. A simple setup to symlink dotfiles into `~`. Just run `./bootstrap`. The bootstrap script will also source any files in `source-once`.
+
+Most of the files here are from:
 
 * [Zach Holman's Dotfiles](https://github.com/holman/dotfiles)
-* [Mathias Bynens' dotfiles](https://github.com/mathiasbynens/dotfiles)
-
-I couldn't find a dotfiles framework that exactly suited my needs, so I started my own. The bootstrap script will symlink all dotfiles into
+* [Mathias Bynens' Dotfiles](https://github.com/mathiasbynens/dotfiles)
