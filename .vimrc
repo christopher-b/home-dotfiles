@@ -1,8 +1,7 @@
 execute pathogen#infect()
-set cursorline                        " Highlight current line
 set expandtab                         " Tabs are spaces
 set incsearch                         " Highlight dynamically as pattern is typed
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_  " Show “invisible” characters
+set lcs=tab:▸\ ,trail:·               " Show “invisible” characters
 set list
 set number                            " Line numbers
 set paste                             " Insert paste mode
@@ -21,3 +20,7 @@ filetype plugin indent on
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
+
+" Other options
+" set cursorline
+" set lcs=eol:¬
